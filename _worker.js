@@ -26,12 +26,7 @@ export default {
 		// 3. Original Code ရဲ့ လိုအပ်ချက်အရ URL ကို ပြန်သတ်မှတ်ခြင်း
 		// (ဒီနေရာမှာ const ပြန်မသုံးပါနဲ့၊ မျက်တောင်ဖွင့်ပိတ်လည်း မသုံးပါနဲ့)
 		url = new URL(修正请求URL(request.url));
-
-		// --- ဒီအောက်ကနေစပြီး ကျန်တဲ့ Original Code တွေကို ဘာမှမပြင်ဘဲ ဒီအတိုင်း ဆက်ထားပါ ---
-		const UA = request.headers.get('User-Agent') || 'null';
-		const upgradeHeader = (request.headers.get('Upgrade') || '').toLowerCase();
-
-		const UA = request.headers.get('User-Agent') || 'null';
+	    const UA = request.headers.get('User-Agent') || 'null';
 		const upgradeHeader = (request.headers.get('Upgrade') || '').toLowerCase(), contentType = (request.headers.get('content-type') || '').toLowerCase();
 		const 管理员密码 = env.ADMIN || env.admin || env.PASSWORD || env.password || env.pswd || env.TOKEN || env.KEY || env.UUID || env.uuid;
 		const 加密秘钥 = env.KEY || '勿动此默认密钥，有需求请自行通过添加变量KEY进行修改';
