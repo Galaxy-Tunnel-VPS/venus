@@ -15,12 +15,14 @@ export default {
     const today = new Date().toISOString().split('T')[0];
 
     if (expireDate && today > expireDate) {
-      return new Response("❌ Your Subscription has Expired!", {
+      return new Response(" Your Subscription has Expired!", {
         status: 403,
         headers: { "Content-Type": "text/plain; charset=utf-8" }
       });
 	}
-	 url = new URL(修正请求URL(request.url));
+	  url = new URL(修正请求URL(request.url));
+
+
 
 		const UA = request.headers.get('User-Agent') || 'null';
 		const upgradeHeader = (request.headers.get('Upgrade') || '').toLowerCase(), contentType = (request.headers.get('content-type') || '').toLowerCase();
