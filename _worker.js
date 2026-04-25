@@ -17,19 +17,34 @@ export default {
 
 		// 2. ရက်စွဲ စစ်ဆေးတဲ့ အပိုင်း
 		if (expireDate && today > expireDate) {
-			return new Response("❌ Your Subscription has Expired!", {
+export default {
+	async fetch(request, env, ctx) {
+		// 1. URL ကို let နဲ့ ကြေညာပါ
+		let url = new URL(request.url);
+		const expireDate = url.searchParams.get('expire');
+		const today = new Date().toISOString().split('T')[0];
+
+		// 2. ရက်စွဲ စစ်ဆေးခြင်း
+		if (expireDate && today > expireDate) {
+			return new Response(" Your Subscription has Expired!", {
 				status: 403,
 				headers: { "Content-Type": "text/plain; charset=utf-8" }
 			});
 		}
 
-		// 3. Original Code ရဲ့ လိုအပ်ချက်အရ URL ကို ပြန်သတ်မှတ်ခြင်း
-		// (ဒီနေရာမှာ const ပြန်မသုံးပါနဲ့၊ မျက်တောင်ဖွင့်ပိတ်လည်း မသုံးပါနဲ့)
-		url = new URL(修正请求URL(request.url));
-	    const UA = request.headers.get('User-Agent') || 'null';
-		const upgradeHeader = (request.headers.get('Upgrade') || '').toLowerCase(), contentType = (request.headers.get('content-type') || '').toLowerCase();
-		const 管理员密码 = env.ADMIN || env.admin || env.PASSWORD || env.password || env.pswd || env.TOKEN || env.KEY || env.UUID || env.uuid;
-		const 加密秘钥 = env.KEY || '勿动此默认密钥，有需求请自行通过添加变量KEY进行修改';
+		// 3. URL ကို တန်ဖိုးပြန်သတ်မှတ်ခြင်း (const မသုံးရပါ)
+		url = new URL(URL(request.url));
+
+		// 4. Variables များကို တစ်ကြိမ်စီသာ ကြေညာပါ
+		const UA = request.headers.get('User-Agent') || 'null';
+		const upgradeHeader = (request.headers.get('Upgrade') || '').toLowerCase();
+		const contentType = (request.headers.get('content-type') || '').toLowerCase();
+
+		const  = env.ADMIN || env.admin || env.PASSWORD || env.password || env.pswd || env.TOKEN || env.KEY || env.UUID || env.uuid;
+		const  = env.KEY || 'KEY';
+		
+		// --- ဒီအောက်ကနေစပြီး ကျန်တဲ့ Original Code တွေကို ဘာမှမပြင်ဘဲ ဆက်ထားပါ ---
+
 		const userIDMD5 = await MD5MD5(管理员密码 + 加密秘钥);
 		const uuidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
 		const envUUID = env.UUID || env.uuid;
