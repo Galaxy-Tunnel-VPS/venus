@@ -17,15 +17,6 @@ export default {
 
 		// 2. ရက်စွဲ စစ်ဆေးတဲ့ အပိုင်း
 		if (expireDate && today > expireDate) {
-export default {
-	async fetch(request, env, ctx) {
-		// 1. URL ကို let နဲ့ ကြေညာပါ
-		let url = new URL(request.url);
-		const expireDate = url.searchParams.get('expire');
-		const today = new Date().toISOString().split('T')[0];
-
-		// 2. ရက်စွဲ စစ်ဆေးခြင်း
-		if (expireDate && today > expireDate) {
 			return new Response(" Your Subscription has Expired!", {
 				status: 403,
 				headers: { "Content-Type": "text/plain; charset=utf-8" }
